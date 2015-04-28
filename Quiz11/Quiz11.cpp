@@ -6,7 +6,7 @@ using namespace std;
 
 void readNumbersFromFile(string random_numbers){
 	float average = 0.0, Total = 0.0, var = 0.0;
-	int counter;
+	int counter=0, count = 0;
 	string line;
 	ifstream theFile(random_numbers);
 	if(theFile.is_open()){
@@ -18,12 +18,17 @@ void readNumbersFromFile(string random_numbers){
 	}
 
 	average = Total/counter;
-
 	int array[counter-1];
-
-  	for(int i=(counter-1); i>=0; i--){
-    	var = ((array[i] - average) * (array[i] - average) + var);
-  	}
+	if(theFile.is_open()){
+		while(getline(theFile, line)){
+			int lines = stoi(line);
+			array[count] = lines;
+			count ++;
+		}
+	  	for(int i=(counter-1); i>=0; i--){
+	    	var = ((array[i] - average) * (array[i] - average) + var);
+	  	}
+	}
 
 	cout<< counter << " lines in that file"<< endl;
 	cout << "The total of the values is: " << Total << endl;
