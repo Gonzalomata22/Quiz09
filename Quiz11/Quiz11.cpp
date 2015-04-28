@@ -18,16 +18,11 @@ void readNumbersFromFile(string random_numbers){
 	}
 
 	average = Total/counter;
-	int array[counter-1];
 	if(theFile.is_open()){
 		while(getline(theFile, line)){
 			int lines = stoi(line);
-			array[count] = lines;
-			count ++;
+			var = var + (lines - average) * (lines - average);
 		}
-	  	for(int i=(counter-1); i>=0; i--){
-	    	var = ((array[i] - average) * (array[i] - average) + var);
-	  	}
 	}
 
 	cout<< counter << " lines in that file"<< endl;
