@@ -7,26 +7,22 @@
 using namespace std;
 
 void check_banana(string fileName){
-	string fullString, banana = "banana";
+	string line, banana = "banana";
 
 	ifstream inFile;
 	inFile.open(fileName);
 
-	int count;
+	int counter = 0;
 
-	if (inFile.good()) {
-		while (getline (inFile, fullString)) {
-	    	transform(fullString.begin(),fullString.end(),fullString.begin(), ::tolower);
-		    if (fullString.find(banana) != string::npos) {
-		        count ++;
-		    }
-    	}
-    cout << "Times that 'Banana' appears is: " << count << endl;
-  	} else {
-			cout << "There´s something wrong with your input file. Try again." << endl;
-			exit(1);
+	while(getline(inFile,line)){
+
+		transform(line.begin(), line.end(), line.begin(), :: tolower);
+
+		if(line.find(banana)!=string::npos){
+			counter++;
+		}
 	}
-		
+	cout << "The word banana appears " << counter << " times in the file." << endl;
 } 
 
 int main(){
